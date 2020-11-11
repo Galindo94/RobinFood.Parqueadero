@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Dto\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Classes\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Swagger\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
+
+</Project>
