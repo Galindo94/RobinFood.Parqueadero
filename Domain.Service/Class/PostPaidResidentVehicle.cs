@@ -4,11 +4,15 @@
     using Common.Utils.Enums;
     using Common.Utils.Excepcions;
     using Common.Utils.Resources;
+    using Domain.Service.DTO.General;
+    using Domain.Service.DTO.Vehicle;
     using Domain.Service.Services.Abstract;
     using Infraestructure.Core.UnitOfWork.Interface;
+    using Infraestructure.Entity.Entities.General;
     using Infraestructure.Entity.Entities.InputsOutputs;
     using Infraestructure.Entity.Entities.Vehicle;
     using System;
+    using System.Collections.Generic;
     using static Common.Utils.Enums.Enums;
 
     class PostPaidResidentVehicle : AVehicleBase
@@ -46,9 +50,58 @@
 
         public override decimal GetAmount(VehicleEntity oVehicle)
         {
-            throw new BusinessExeption(string.Format(GeneralMessages.InvalidVehicleTypeForPaymentModule,
-                VehicleType.Resident.GetDisplayName(),
-                VehicleType.PostPaidResident.GetDisplayName()));
+            AmountEntity oAmount = GetVigentAmount(VehicleType.PostPaidResident);
+            if (oAmount == null)
+                throw new BusinessExeption(string.Format(GeneralMessages.AmountNotFound, VehicleType.PostPaidResident.GetDisplayName()));
+
+            decimal Amount = 0;
+            int Monts = GetMonts(oVehicle.CutoffDate);
+            int Payments = oVehicle.PaymentVehicleEntities.Count;
+            int diference = Monts - Payments;
+
+            if (diference > 0)
+                Amount = oVehicle.TotalMinutesOfStay * oAmount.Amount;
+
+            return Amount;
+        }
+
+        public override CreateVehicleResponseDto InsertPayment(GetAmountResponseDto getAmountResponseDto, decimal PaymentValue)
+        {
+            VehicleEntity oVehicle = getAmountResponseDto.Vehicle;
+            oVehicle.TotalMinutesOfStay = 0;
+            oVehicle.PaymentVehicleEntities = new List<PaymentVehicleEntity>
+            {
+                new PaymentVehicleEntity()
+                {
+                    PaymentDate = DateTime.Now,
+                    PaymentValue = PaymentValue,
+                    CreationDate = DateTime.Now,
+                    CreationUser = UsersParkingLot.System
+                }
+            };
+
+            unitOfWork.VehicleRepository.Update(oVehicle);
+            bool inserted = unitOfWork.Save() > 0;
+
+            CreateVehicleResponseDto oResponse = new CreateVehicleResponseDto
+            {
+                Inserted = inserted,
+                Message = inserted ? string.Format(GeneralMessages.RegisteredPayment, getAmountResponseDto.Vehicle.VehiclePlate) : GeneralMessages.ItemNoInserted
+            };
+
+            return oResponse;
+        }
+
+        private AmountEntity GetVigentAmount(VehicleType vehicleType)
+        {
+            return unitOfWork
+               .AmountRepository
+               .LastOrDefault(g => g.VehicleType.Equals((int)vehicleType));
+        }
+
+        private static int GetMonts(DateTime CutoffDate)
+        {
+            return (int)(((DateTime.Now - CutoffDate).TotalDays / 365.25) * 12);
         }
     }
 }

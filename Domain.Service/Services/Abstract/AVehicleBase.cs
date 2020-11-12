@@ -1,5 +1,7 @@
 ﻿namespace Domain.Service.Services.Abstract
 {
+    using Domain.Service.DTO.General;
+    using Domain.Service.DTO.Vehicle;
     using Infraestructure.Entity.Entities.InputsOutputs;
     using Infraestructure.Entity.Entities.Vehicle;
 
@@ -15,5 +17,9 @@
         public abstract decimal RegisterOutPut(ControlInputsOutputsEntity controlInputsOutputs);
 
         public abstract decimal GetAmount(VehicleEntity oVehicle);
+
+        public abstract CreateVehicleResponseDto InsertPayment(GetAmountResponseDto getAmountResponseDto, decimal PaymentValue);
+
+
     }
 }

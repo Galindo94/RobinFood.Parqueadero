@@ -4,12 +4,16 @@
     using Common.Utils.Enums;
     using Common.Utils.Excepcions;
     using Common.Utils.Resources;
+    using DocumentFormat.OpenXml.Office2010.ExcelAc;
+    using Domain.Service.DTO.General;
+    using Domain.Service.DTO.Vehicle;
     using Domain.Service.Services.Abstract;
     using Infraestructure.Core.UnitOfWork.Interface;
     using Infraestructure.Entity.Entities.General;
     using Infraestructure.Entity.Entities.InputsOutputs;
     using Infraestructure.Entity.Entities.Vehicle;
     using System;
+    using System.Collections.Generic;
     using static Common.Utils.Enums.Enums;
 
     class ResidentVehicle : AVehicleBase
@@ -60,6 +64,32 @@
                 Amount = diference * oAmount.Amount;
 
             return Amount;
+        }
+
+        public override CreateVehicleResponseDto InsertPayment(GetAmountResponseDto getAmountResponseDto, decimal PaymentValue)
+        {
+            VehicleEntity oVehicle = getAmountResponseDto.Vehicle;
+            oVehicle.PaymentVehicleEntities = new List<PaymentVehicleEntity>
+            {
+                new PaymentVehicleEntity()
+                {
+                    PaymentDate = DateTime.Now,
+                    PaymentValue = PaymentValue,
+                    CreationDate = DateTime.Now,
+                    CreationUser = UsersParkingLot.System
+                }
+            };
+
+            unitOfWork.VehicleRepository.Update(oVehicle);
+            bool inserted = unitOfWork.Save() > 0;
+
+            CreateVehicleResponseDto oResponse = new CreateVehicleResponseDto
+            {
+                Inserted = inserted,
+                Message = inserted ? string.Format(GeneralMessages.RegisteredPayment, getAmountResponseDto.Vehicle.VehiclePlate) : GeneralMessages.ItemNoInserted
+            };
+
+            return oResponse;
         }
 
         private AmountEntity GetVigentAmount(VehicleType vehicleType)

@@ -4,6 +4,8 @@
     using Common.Utils.Enums;
     using Common.Utils.Excepcions;
     using Common.Utils.Resources;
+    using Domain.Service.DTO.General;
+    using Domain.Service.DTO.Vehicle;
     using Domain.Service.Services.Abstract;
     using Infraestructure.Core.UnitOfWork.Interface;
     using Infraestructure.Entity.Entities.General;
@@ -58,6 +60,13 @@
             throw new BusinessExeption(string.Format(GeneralMessages.InvalidVehicleTypeForPaymentModule,
                 VehicleType.Resident.GetDisplayName(),
                 VehicleType.PostPaidResident.GetDisplayName()));
+        }
+
+        public override CreateVehicleResponseDto InsertPayment(GetAmountResponseDto getAmountResponseDto, decimal PaymentValue)
+        {
+            throw new BusinessExeption(string.Format(GeneralMessages.InvalidVehicleTypeForPaymentModule,
+                           VehicleType.Resident.GetDisplayName(),
+                           VehicleType.PostPaidResident.GetDisplayName()));
         }
     }
 }

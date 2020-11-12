@@ -138,11 +138,23 @@
   <data name="ItemNoInserted" xml:space="preserve">
     <value>No fue posible guardar el registro.</value>
   </data>
+  <data name="LowerPaymentValue" xml:space="preserve">
+    <value>El valor de pago ingresado no cubre el total de la deuda para el vehículo con placas {0}. La deuda total del vehículo es de ${1}</value>
+  </data>
   <data name="OpenCloseEntrance" xml:space="preserve">
     <value>No es posible registrar la {0} del vehículo {1} por que {2} tiene una entrada abierta.</value>
   </data>
+  <data name="PaymentGreaterThanZero" xml:space="preserve">
+    <value>No es posible ingresar un pago con un valor $0</value>
+  </data>
+  <data name="RegisteredPayment" xml:space="preserve">
+    <value>Se ha registrado correctamente el pago para el vehículo con placa {0}</value>
+  </data>
   <data name="ValueToPayForTheStay" xml:space="preserve">
     <value>El valor a pagar por su estancia es de: $ {0}</value>
+  </data>
+  <data name="VehicleADay" xml:space="preserve">
+    <value>El vehículo con placas {0} se encuentra a paz y salvo. La próxima fecha de pago es el {1}</value>
   </data>
   <data name="VehicleAndTypeVehicleNotFound" xml:space="preserve">
     <value>No fue posible validar la información del vehículo con placas {0} y de tipo {1}</value>
@@ -150,7 +162,13 @@
   <data name="VehicleNotFound" xml:space="preserve">
     <value>No fue posible validar la información del vehículo con placas {0}</value>
   </data>
+  <data name="VehicleTypeNotSupported" xml:space="preserve">
+    <value>El tipo de vehículo especificado no se encuentra configurado en el sistema.</value>
+  </data>
   <data name="VehicleTypeRegistrationNotAllowed" xml:space="preserve">
     <value>No se permite el registro de vehículos de tipo {0} o {1}</value>
+  </data>
+  <data name="VehicleTypeValueAmountInvalid" xml:space="preserve">
+    <value>No es posible configurar un valor de importe para los vehículos de tipo {0}</value>
   </data>
 </root>
