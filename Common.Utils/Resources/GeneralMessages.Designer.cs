@@ -160,11 +160,29 @@ namespace Common.Utils.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El tipo de vehículo especificado no se encuentra configurado en el sistema..
+        /// </summary>
+        public static string VehicleTypeNotSupported {
+            get {
+                return ResourceManager.GetString("VehicleTypeNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No se permite el registro de vehículos de tipo {0} o {1}.
         /// </summary>
         public static string VehicleTypeRegistrationNotAllowed {
             get {
                 return ResourceManager.GetString("VehicleTypeRegistrationNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No es posible configurar un valor de importe para los vehículos de tipo {0}.
+        /// </summary>
+        public static string VehicleTypeValueAmountInvalid {
+            get {
+                return ResourceManager.GetString("VehicleTypeValueAmountInvalid", resourceCulture);
             }
         }
     }

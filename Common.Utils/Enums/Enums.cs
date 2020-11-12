@@ -23,6 +23,5 @@
             [Display(Name = "No Residente")]
             NotResident = 4
         }
-
     }
 }

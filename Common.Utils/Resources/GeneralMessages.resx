@@ -150,7 +150,13 @@
   <data name="VehicleNotFound" xml:space="preserve">
     <value>No fue posible validar la información del vehículo con placas {0}</value>
   </data>
+  <data name="VehicleTypeNotSupported" xml:space="preserve">
+    <value>El tipo de vehículo especificado no se encuentra configurado en el sistema.</value>
+  </data>
   <data name="VehicleTypeRegistrationNotAllowed" xml:space="preserve">
     <value>No se permite el registro de vehículos de tipo {0} o {1}</value>
+  </data>
+  <data name="VehicleTypeValueAmountInvalid" xml:space="preserve">
+    <value>No es posible configurar un valor de importe para los vehículos de tipo {0}</value>
   </data>
 </root>
