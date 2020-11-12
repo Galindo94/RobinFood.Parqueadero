@@ -1,9 +1,5 @@
 ﻿namespace Applicacion.Parqueadero.WebApi.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Applicacion.Transferencias.WebApi.Handlers;
     using Applicacion.Transferencias.WebApi.Models;
     using Common.Utils.Resources;
@@ -12,6 +8,10 @@
     using Domain.Service.Services.Abstract;
     using Domain.Service.Services.Interface;
     using Microsoft.AspNetCore.Mvc;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
     using static Common.Utils.Enums.Enums;
 
     [Route("api/v{version:apiVersion}/[controller]")]
@@ -21,18 +21,14 @@
     public class VehicleController : ControllerBase
     {
         #region Atributes
-
         private readonly IVehicleService vehicleService;
-
         #endregion Atributes
 
         #region Builder
-
         public VehicleController(IVehicleService _vehicleService)
         {
             vehicleService = _vehicleService;
         }
-
         #endregion Builder
 
         /// <summary>

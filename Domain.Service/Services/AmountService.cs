@@ -24,6 +24,12 @@
         }
         #endregion Builder       
 
+        /// <summary>
+        /// Create Amount for a Vehicle Type
+        /// </summary>
+        /// <param name="Amount"></param>
+        /// <param name="oVehicleType"></param>
+        /// <returns></returns>
         public bool CreateAmount(decimal Amount, VehicleType oVehicleType)
         {
             AmountEntity oAmount = new AmountEntity()
@@ -45,6 +51,11 @@
             return unitOfWork.Save() > 0;
         }
 
+        /// <summary>
+        /// Get Vigent Account for a Vehicle Type
+        /// </summary>
+        /// <param name="vehicleType"></param>
+        /// <returns></returns>
         public AmountEntity GetVigentAmount(VehicleType vehicleType)
         {
             return unitOfWork

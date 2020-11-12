@@ -1,11 +1,11 @@
 ﻿namespace Domain.Service.Services.Interface
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using Domain.Service.DTO.General;
+    using Domain.Service.DTO.Vehicle;
 
     public interface IResidentPaymentsService
     {
-        decimal GetAmount(string VehiclePlate);
+        GetAmountResponseDto GetAmount(string VehiclePlate);
+        CreateVehicleResponseDto InsertPayment(InsertPaymentRequestDto insertPaymentRequestDto);
     }
 }

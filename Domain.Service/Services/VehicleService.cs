@@ -19,20 +19,22 @@
     {
 
         #region Members
-
         public readonly IUnitOfWork unitOfWork;
-
         #endregion Members
 
         #region Builder
-
         public VehicleService(IUnitOfWork iUnitOfWork)
         {
             unitOfWork = iUnitOfWork;
         }
-
         #endregion Builder       
 
+        /// <summary>
+        /// Create a new vehicle
+        /// </summary>
+        /// <param name="VehiclePlate"></param>
+        /// <param name="VehicleType"></param>
+        /// <returns></returns>
         public CreateVehicleResponseDto CreateVehicle(string VehiclePlate, VehicleType VehicleType)
         {
             CreateVehicleResponseDto oResponse = new CreateVehicleResponseDto();
@@ -70,6 +72,11 @@
 
         }
 
+        /// <summary>
+        /// Register a new input
+        /// </summary>
+        /// <param name="VehiclePlate"></param>
+        /// <returns></returns>
         public CreateVehicleResponseDto RegisterInput(string VehiclePlate)
         {
             CreateVehicleResponseDto oResponse = new CreateVehicleResponseDto();
@@ -106,6 +113,11 @@
             return oResponse;
         }
 
+        /// <summary>
+        /// Register a new Output
+        /// </summary>
+        /// <param name="VehiclePlate"></param>
+        /// <returns></returns>
         public RegisterOutPutResponseDto RegisterOutPut(string VehiclePlate)
         {
             RegisterOutPutResponseDto oResponse = new RegisterOutPutResponseDto();
@@ -151,6 +163,11 @@
             return oResponse;
         }
 
+        /// <summary>
+        /// Get Vehicle
+        /// </summary>
+        /// <param name="VehiclePlate"></param>
+        /// <returns></returns>
         public VehicleEntity GetVehicle(string VehiclePlate)
         {
             return unitOfWork
@@ -159,6 +176,12 @@
                                 g => g.PaymentVehicleEntities);
         }
 
+        /// <summary>
+        /// Set Vehicle base 
+        /// </summary>
+        /// <param name="oVehicle"></param>
+        /// <param name="vehicleType"></param>
+        /// <returns></returns>
         private AVehicleBase GetVehicleBase(VehicleEntity oVehicle, VehicleType vehicleType)
         {
             AVehicleBase aVehicle;

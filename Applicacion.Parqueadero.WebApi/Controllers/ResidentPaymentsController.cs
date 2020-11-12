@@ -1,17 +1,18 @@
 ﻿namespace Applicacion.Parqueadero.WebApi.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Applicacion.Transferencias.WebApi.Handlers;
     using Applicacion.Transferencias.WebApi.Models;
     using Common.Utils.Resources;
+    using Domain.Service.DTO.General;
     using Domain.Service.DTO.Vehicle;
     using Domain.Service.Services;
     using Domain.Service.Services.Abstract;
     using Domain.Service.Services.Interface;
     using Microsoft.AspNetCore.Mvc;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
     using static Common.Utils.Enums.Enums;
 
     [Route("api/v{version:apiVersion}/[controller]")]
@@ -46,13 +47,33 @@
         {
             IActionResult oResponse;
             ResponseModel<object> oResponseModel;
-            decimal oResult = residentPaymentsService.GetAmount(VehiclePlate);
+            GetAmountResponseDto oResult = residentPaymentsService.GetAmount(VehiclePlate);
 
             oResponseModel = new ResponseModel<object>()
             {
                 IsSuccess = true,
-                Messages = string.Format(GeneralMessages.AmountToPay, VehiclePlate, oResult),
-                Result = oResult
+                Messages = string.Format(GeneralMessages.AmountToPay, VehiclePlate, oResult.Amount),
+                Result = null
+            };
+
+            oResponse = Ok(oResponseModel);
+
+            return oResponse;
+        }
+
+
+        [HttpPost("InsertPayment")]
+        public IActionResult InsertPayment(InsertPaymentRequestDto insertPaymentRequestDto)
+        {
+            IActionResult oResponse;
+            ResponseModel<object> oResponseModel;
+            CreateVehicleResponseDto oResult = residentPaymentsService.InsertPayment(insertPaymentRequestDto);
+
+            oResponseModel = new ResponseModel<object>()
+            {
+                IsSuccess = oResult.Inserted,
+                Messages = oResult.Message,
+                Result = null
             };
 
             oResponse = Ok(oResponseModel);

@@ -1,13 +1,13 @@
 ﻿namespace Domain.Service.Services
 {
-    using Common.Utils.Enums;
     using Common.Utils.Excepcions;
     using Common.Utils.Resources;
     using Domain.Service.Class;
+    using Domain.Service.DTO.General;
+    using Domain.Service.DTO.Vehicle;
     using Domain.Service.Services.Abstract;
     using Domain.Service.Services.Interface;
     using Infraestructure.Core.UnitOfWork.Interface;
-    using Infraestructure.Entity.Entities.General;
     using Infraestructure.Entity.Entities.Vehicle;
     using System;
     using static Common.Utils.Enums.Enums;
@@ -32,16 +32,40 @@
 
         #endregion Builder       
 
-        public decimal GetAmount(string VehiclePlate)
+        public GetAmountResponseDto GetAmount(string VehiclePlate)
         {
-            VehicleEntity oVehicle = vehicleService.GetVehicle(VehiclePlate);
+            GetAmountResponseDto oResponse = new GetAmountResponseDto
+            {
+                Vehicle = vehicleService.GetVehicle(VehiclePlate)
+            };
 
-            if (oVehicle == null)
+            if (oResponse.Vehicle == null)
                 throw new BusinessExeption(string.Format(GeneralMessages.VehicleNotFound, VehiclePlate));
 
-            AVehicleBase aVehicle = GetVehicleBase(oVehicle, (VehicleType)Enum.ToObject(typeof(VehicleType), oVehicle.VehicleType));
+            AVehicleBase aVehicle = GetVehicleBase(oResponse.Vehicle, (VehicleType)Enum.ToObject(typeof(VehicleType), oResponse.Vehicle.VehicleType));
 
-            return aVehicle.GetAmount(oVehicle);
+            oResponse.Amount = aVehicle.GetAmount(oResponse.Vehicle);
+
+            return oResponse;
+        }
+
+        public CreateVehicleResponseDto InsertPayment(InsertPaymentRequestDto insertPaymentRequestDto)
+        {
+            if (insertPaymentRequestDto.PaymentValue == 0)
+                throw new BusinessExeption(GeneralMessages.PaymentGreaterThanZero);
+
+            GetAmountResponseDto oResponseGetAmount = GetAmount(insertPaymentRequestDto.VehiclePlate);
+
+            if (oResponseGetAmount.Amount == 0)
+                throw new BusinessExeption(string.Format(GeneralMessages.VehicleADay, oResponseGetAmount.Vehicle.VehiclePlate, oResponseGetAmount.Vehicle.CutoffDate.Date));
+
+            if (oResponseGetAmount.Amount > insertPaymentRequestDto.PaymentValue)
+                throw new BusinessExeption(string.Format(GeneralMessages.LowerPaymentValue, oResponseGetAmount.Vehicle.VehiclePlate, oResponseGetAmount.Amount));
+
+
+            AVehicleBase aVehicle = GetVehicleBase(oResponseGetAmount.Vehicle, (VehicleType)Enum.ToObject(typeof(VehicleType), oResponseGetAmount.Vehicle.VehicleType));
+
+            return aVehicle.InsertPayment(oResponseGetAmount, insertPaymentRequestDto.PaymentValue);
         }
 
         private AVehicleBase GetVehicleBase(VehicleEntity oVehicle, VehicleType vehicleType)

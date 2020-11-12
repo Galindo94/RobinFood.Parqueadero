@@ -124,6 +124,15 @@ namespace Common.Utils.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El valor de pago ingresado no cubre el total de la deuda para el vehículo con placas {0}. La deuda total del vehículo es de ${1}.
+        /// </summary>
+        public static string LowerPaymentValue {
+            get {
+                return ResourceManager.GetString("LowerPaymentValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No es posible registrar la {0} del vehículo {1} por que {2} tiene una entrada abierta..
         /// </summary>
         public static string OpenCloseEntrance {
@@ -133,11 +142,38 @@ namespace Common.Utils.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No es posible ingresar un pago con un valor $0.
+        /// </summary>
+        public static string PaymentGreaterThanZero {
+            get {
+                return ResourceManager.GetString("PaymentGreaterThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha registrado correctamente el pago para el vehículo con placa {0}.
+        /// </summary>
+        public static string RegisteredPayment {
+            get {
+                return ResourceManager.GetString("RegisteredPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El valor a pagar por su estancia es de: $ {0}.
         /// </summary>
         public static string ValueToPayForTheStay {
             get {
                 return ResourceManager.GetString("ValueToPayForTheStay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El vehículo con placas {0} se encuentra a paz y salvo. La próxima fecha de pago es el {1}.
+        /// </summary>
+        public static string VehicleADay {
+            get {
+                return ResourceManager.GetString("VehicleADay", resourceCulture);
             }
         }
         
