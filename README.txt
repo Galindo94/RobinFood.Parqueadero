@@ -1,3 +1,6 @@
+En la raiz del proyecto se agrega coleccion de POSTMAN con los casos de uso
+Nombre ARchivo = RobinFood Parqueadero.postman_collection
+
 Paso a paso para la ejecución de las pruebas.
 
 Base de datos.
