@@ -1,0 +1,866 @@
+{
+	"info": {
+		"_postman_id": "4e990ae6-7c19-4218-b592-20965bb54e6f",
+		"name": "RobinFood Parqueadero",
+		"description": "Casos de uso para la aplicaicon de parqueadero de RobinFood",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. General",
+			"item": [
+				{
+					"name": "1. CreateAmountVehicleVIP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 0,\r\n  \"vehicleType\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/General/CreateAmount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"General",
+								"CreateAmount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. CreateAmountVehicleResident",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 50000,\r\n  \"vehicleType\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/General/CreateAmount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"General",
+								"CreateAmount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. CreateAmountVehiclePostPaidResident",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 30,\r\n  \"vehicleType\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/General/CreateAmount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"General",
+								"CreateAmount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. CreateAmountVehicleNotResident",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 50,\r\n  \"vehicleType\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/General/CreateAmount",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"General",
+								"CreateAmount"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "2. VehicleService",
+			"item": [
+				{
+					"name": "1. Create Vehicles",
+					"item": [
+						{
+							"name": "1. Create VIP Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/CreateVehicle?VehiclePlate=MOX045&VehicleType=VIP",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"CreateVehicle"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "MOX045"
+										},
+										{
+											"key": "VehicleType",
+											"value": "VIP"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Create Resident Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/CreateVehicle?VehiclePlate=KJB283&VehicleType=Resident",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"CreateVehicle"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "KJB283"
+										},
+										{
+											"key": "VehicleType",
+											"value": "Resident"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Create PostPaid Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/CreateVehicle?VehiclePlate=MMS087&VehicleType=PostPaidResident",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"CreateVehicle"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "MMS087"
+										},
+										{
+											"key": "VehicleType",
+											"value": "PostPaidResident"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. Create NotType Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/CreateVehicle?VehiclePlate=RXT090&VehicleType=NotType",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"CreateVehicle"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "RXT090"
+										},
+										{
+											"key": "VehicleType",
+											"value": "NotType"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5. Create NotResident Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/CreateVehicle?VehiclePlate=RXT090&VehicleType=NotResident",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"CreateVehicle"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "RXT090"
+										},
+										{
+											"key": "VehicleType",
+											"value": "NotResident"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5. Create NotResident Vehicle Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/CreateVehicle?VehiclePlate=RXT090&VehicleType=NotEnum",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"CreateVehicle"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "RXT090"
+										},
+										{
+											"key": "VehicleType",
+											"value": "NotEnum"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6. Create Exist Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/CreateVehicle?VehiclePlate=MOX045&VehicleType=VIP",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"CreateVehicle"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "MOX045"
+										},
+										{
+											"key": "VehicleType",
+											"value": "VIP"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Create Vehicles",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "2. Create Input",
+					"item": [
+						{
+							"name": "1. Create Input VIP Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/RegisterInput?VehiclePlate=MOX045",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"RegisterInput"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "MOX045"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Create Input Resident Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/RegisterInput?VehiclePlate=KJB283",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"RegisterInput"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "KJB283"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Create Input Post Paid Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/RegisterInput?VehiclePlate=MMS087",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"RegisterInput"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "MMS087"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. Create Input Not Resident Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/RegisterInput?VehiclePlate=TKI860",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"RegisterInput"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "TKI860"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Create Inputs",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "3. Create Output",
+					"item": [
+						{
+							"name": "1. Create OutPut VIP Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/RegisterOutPut?VehiclePlate=MOX045",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"RegisterOutPut"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "MOX045"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Create Output Resident Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/RegisterOutPut?VehiclePlate=KJB283",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"RegisterOutPut"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "KJB283"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Create OutPut Post Paid Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/RegisterOutPut?VehiclePlate=MMS087",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"RegisterOutPut"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "MMS087"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. Create OutPut Not Resident Vehicle",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8585/api/v1.0/Vehicle/RegisterOutPut?VehiclePlate=TKI860",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8585",
+									"path": [
+										"api",
+										"v1.0",
+										"Vehicle",
+										"RegisterOutPut"
+									],
+									"query": [
+										{
+											"key": "VehiclePlate",
+											"value": "TKI860"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Create Vehicles Outputs ",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Casos de uso para la creacion de los Vehiculos, entradas y salidas",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "3. ResidentPayments",
+			"item": [
+				{
+					"name": "1. Get amount VIP Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/ResidentPayments/GetAmount?VehiclePlate=MOX045",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"ResidentPayments",
+								"GetAmount"
+							],
+							"query": [
+								{
+									"key": "VehiclePlate",
+									"value": "MOX045"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get amount Post Paid Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/ResidentPayments/GetAmount?VehiclePlate=MMS087",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"ResidentPayments",
+								"GetAmount"
+							],
+							"query": [
+								{
+									"key": "VehiclePlate",
+									"value": "MMS087"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get amount Resident Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/ResidentPayments/GetAmount?VehiclePlate=KJB283",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"ResidentPayments",
+								"GetAmount"
+							],
+							"query": [
+								{
+									"key": "VehiclePlate",
+									"value": "KJB283"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Insert Payment VIP Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"vehiclePlate\": \"MOX045\",\r\n  \"paymentValue\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/ResidentPayments/InsertPayment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"ResidentPayments",
+								"InsertPayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Insert Payment Post Paid Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"vehiclePlate\": \"MMS087\",\r\n  \"paymentValue\": 162.90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/ResidentPayments/InsertPayment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"ResidentPayments",
+								"InsertPayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Insert amount Resident Vehicle Value 0",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"vehiclePlate\": \"KJB283\",\r\n  \"paymentValue\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/ResidentPayments/InsertPayment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"ResidentPayments",
+								"InsertPayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Insert amount Resident Vehicle Value Minus",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"vehiclePlate\": \"KJB283\",\r\n  \"paymentValue\": 12000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/ResidentPayments/InsertPayment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"ResidentPayments",
+								"InsertPayment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Insert amount Resident Vehicle FULL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"vehiclePlate\": \"KJB283\",\r\n  \"paymentValue\": 12000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8585/api/v1.0/ResidentPayments/InsertPayment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8585",
+							"path": [
+								"api",
+								"v1.0",
+								"ResidentPayments",
+								"InsertPayment"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Residents Payments",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

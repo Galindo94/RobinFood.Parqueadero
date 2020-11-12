@@ -70,6 +70,9 @@
 
         private AVehicleBase GetVehicleBase(VehicleEntity oVehicle, VehicleType vehicleType)
         {
+            if (!Enum.IsDefined(typeof(VehicleType), vehicleType))
+                throw new BusinessExeption(GeneralMessages.VehicleTypeNotSupported);
+
             AVehicleBase aVehicle;
 
             switch (vehicleType)

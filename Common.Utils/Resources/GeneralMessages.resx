@@ -141,6 +141,9 @@
   <data name="LowerPaymentValue" xml:space="preserve">
     <value>El valor de pago ingresado no cubre el total de la deuda para el vehículo con placas {0}. La deuda total del vehículo es de ${1}</value>
   </data>
+  <data name="NoRegisterInputOpen" xml:space="preserve">
+    <value>No se puede registrar el vehículo debido a que tiene una entrada abierta en el sistema.</value>
+  </data>
   <data name="OpenCloseEntrance" xml:space="preserve">
     <value>No es posible registrar la {0} del vehículo {1} por que {2} tiene una entrada abierta.</value>
   </data>
