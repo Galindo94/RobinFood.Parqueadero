@@ -133,6 +133,15 @@ namespace Common.Utils.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se puede registrar el vehículo debido a que tiene una entrada abierta en el sistema..
+        /// </summary>
+        public static string NoRegisterInputOpen {
+            get {
+                return ResourceManager.GetString("NoRegisterInputOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No es posible registrar la {0} del vehículo {1} por que {2} tiene una entrada abierta..
         /// </summary>
         public static string OpenCloseEntrance {

@@ -39,34 +39,39 @@
         {
             CreateVehicleResponseDto oResponse = new CreateVehicleResponseDto();
 
-            if (!ValidateExistVehicle(VehiclePlate) && !ValidateInputNotOpen(VehiclePlate))
+            if (!Enum.IsDefined(typeof(VehicleType), VehicleType))
+                throw new BusinessExeption(GeneralMessages.VehicleTypeNotSupported);
+
+            if (ValidateExistVehicle(VehiclePlate))
+                throw new BusinessExeption(string.Format(GeneralMessages.ExistVehicle, VehiclePlate.ToUpper()));
+
+            if (ValidateInputNotOpen(VehiclePlate))
+                throw new BusinessExeption(GeneralMessages.NoRegisterInputOpen);
+
+            if (VehicleType != VehicleType.NotType && VehicleType != VehicleType.NotResident)
             {
-                if (VehicleType != VehicleType.NotType && VehicleType != VehicleType.NotResident)
+                VehicleDto oVehicleDto = new VehicleDto
                 {
-                    VehicleDto oVehicleDto = new VehicleDto
-                    {
-                        VehiclePlate = VehiclePlate,
-                        VehicleType = (int)VehicleType,
-                    };
+                    VehiclePlate = VehiclePlate,
+                    VehicleType = (int)VehicleType,
+                };
 
-                    VehicleEntity oVehicle = Mapper.Map<VehicleEntity>(oVehicleDto);
-                    oVehicle.CreationDate = DateTime.Now;
-                    oVehicle.CreationUser = UsersParkingLot.System;
-                    oVehicle.CutoffDate = DateTime.Now;
+                VehicleEntity oVehicle = Mapper.Map<VehicleEntity>(oVehicleDto);
+                oVehicle.CreationDate = DateTime.Now;
+                oVehicle.CreationUser = UsersParkingLot.System;
+                oVehicle.CutoffDate = DateTime.Now;
 
-                    unitOfWork.VehicleRepository.Insert(oVehicle);
+                unitOfWork.VehicleRepository.Insert(oVehicle);
 
-                    if (unitOfWork.Save() > 0)
-                    {
-                        oResponse.Inserted = true;
-                        oResponse.Message = GeneralMessages.ItemInserted;
-                    }
+                if (unitOfWork.Save() > 0)
+                {
+                    oResponse.Inserted = true;
+                    oResponse.Message = GeneralMessages.ItemInserted;
                 }
-                else
-                    oResponse.Message = string.Format(GeneralMessages.VehicleTypeRegistrationNotAllowed, VehicleType.NotType.GetDisplayName(), VehicleType.NotResident.GetDisplayName());
             }
             else
-                oResponse.Message = string.Format(GeneralMessages.ExistVehicle, VehiclePlate.ToUpper());
+                oResponse.Message = string.Format(GeneralMessages.VehicleTypeRegistrationNotAllowed, VehicleType.NotType.GetDisplayName(), VehicleType.NotResident.GetDisplayName());
+
 
             return oResponse;
 
@@ -184,6 +189,9 @@
         /// <returns></returns>
         private AVehicleBase GetVehicleBase(VehicleEntity oVehicle, VehicleType vehicleType)
         {
+            if (!Enum.IsDefined(typeof(VehicleType), vehicleType))
+                throw new BusinessExeption(GeneralMessages.VehicleTypeNotSupported);
+
             AVehicleBase aVehicle;
 
             switch (vehicleType)
