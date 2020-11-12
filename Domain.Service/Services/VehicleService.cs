@@ -39,7 +39,7 @@
         {
             CreateVehicleResponseDto oResponse = new CreateVehicleResponseDto();
 
-            if (!ValidateExistVehicle(VehiclePlate))
+            if (!ValidateExistVehicle(VehiclePlate) && !ValidateInputNotOpen(VehiclePlate))
             {
                 if (VehicleType != VehicleType.NotType && VehicleType != VehicleType.NotResident)
                 {

@@ -61,7 +61,11 @@
             return oResponse;
         }
 
-
+        /// <summary>
+        /// Insert Payment
+        /// </summary>
+        /// <param name="insertPaymentRequestDto"></param>
+        /// <returns></returns>
         [HttpPost("InsertPayment")]
         public IActionResult InsertPayment(InsertPaymentRequestDto insertPaymentRequestDto)
         {
